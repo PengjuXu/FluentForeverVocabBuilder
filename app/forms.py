@@ -15,5 +15,5 @@ class AnkiForm(FlaskForm):
     word_usage = SelectField("Word Usage")
     image_query = StringField("Image Query")
     notes = TextAreaField("Notes")
-    test_spelling = BooleanField("Test Spelling?")
+    test_spelling = BooleanField("Test Spelling?", default="checked")
     submit = SubmitField("Add to Anki")

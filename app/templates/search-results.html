@@ -1,8 +1,9 @@
-﻿{% from "bootstrap/form.html" import render_form, render_field, render_form_row %}
+{% from "bootstrap/form.html" import render_form, render_field, render_form_row %}
 
 <form class="add-form mt-4">
     {{ form.csrf_token }}
 
+    {{ render_field(form.test_spelling) }}
     <label class="form-control-label" for="ipa">IPA</label>
     <div class="form-group d-flex">
         <input class="form-control w-25" id="ipa" name="ipa" type="text" value="{{ form.ipa.data }}">
@@ -43,7 +44,6 @@
     </div>
 
     {{ render_field(form.notes) }}
-    {{ render_field(form.test_spelling) }}
     <button class="btn btn-primary" id="add-submit" name="add-submit" type="button" value="Add to Anki" onclick="add()">
        Add to Anki
         <span class="spinner-border spinner-border-sm add-spinner ml-1 d-none" role="status" aria-hidden="true"></span>
