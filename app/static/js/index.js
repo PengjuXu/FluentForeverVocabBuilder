@@ -105,6 +105,8 @@ function searchImages(query, language, loadFirstPage) {
 
             data.forEach(function (link) {
                 $("<img/>").attr("src", link).addClass("img-thumbnail").insertBefore(".load-more");
+                // not work
+                //$("<img/>").attr("src", encodeURI(link)).addClass("img-thumbnail").insertBefore(".load-more");
             });
 
             waitForSelectedGallery();
