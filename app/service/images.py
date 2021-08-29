@@ -18,7 +18,7 @@ save_path_pat = r".*(temp.*)"
 
 
 def download_images(query: str, page: int, language=None) -> List[str]:
-    response = google_images_download.googleimagesdownload()
+    downloader = google_images_download.googleimagesdownload()
 
     num_images = cfg["NUM_GOOGLE_IMAGES"]
     end = num_images * (page + 1)
@@ -32,10 +32,15 @@ def download_images(query: str, page: int, language=None) -> List[str]:
         "output_directory": cfg["TEMP_DIR"],
         "limit": end,
         "format": "jpg",
+        "size": "medium",
+        "safe_search": True,
         "offset": offset
     }
 
-    paths = response.download(args)[0]
+    paths = downloader.download(args)[0]  # slow, takes seconds, single thread?
+    # on-disk file name may contain '%20' which may fail later retrieval (url need encoding)
+    # file name may be too long,  see 'image_name = str(image_url[slash:qmark]).lower()' in library google_images_download
+    
     relative_paths = [re.findall(save_path_pat, p)[0].replace(os.sep, '/')
                       for p in paths[query] if p]
     return relative_paths

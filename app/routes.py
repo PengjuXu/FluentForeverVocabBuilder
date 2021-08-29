@@ -38,6 +38,7 @@ def search():
         audio_relative_filename = ""
     form.image_query.data = word
 
+    # todo  if verbose (use some mechanism like flask-debug), then show search_result['diag'
     return render_template("search-results.html", word=word, deck=deck_name, form=form,
                            audio_filename=audio_relative_filename)
 

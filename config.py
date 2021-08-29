@@ -5,9 +5,9 @@ class Config(object):
     SECRET_KEY = "fluent-forever"
     GOOGLE_IMAGES_LANGUAGE = "French"
     WIKTIONARY_LANGUAGE = "french"
-    NUM_GOOGLE_IMAGES = 5
+    NUM_GOOGLE_IMAGES = 4    # bigger -> slower
     TEMP_DIR = os.path.join(os.getcwd(), "app", "temp")
-    MAX_IMAGE_SIZE = (400, 400)
+    MAX_IMAGE_SIZE = (400, 400)   # selected images resized to this before going to Anki
     SIMPLE_WORDS_NOTE_TYPE = "2. Picture Words"
     AVAILABLE_LANGUAGES = [
         "Arabic",

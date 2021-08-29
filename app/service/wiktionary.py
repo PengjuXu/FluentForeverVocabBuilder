@@ -1,3 +1,4 @@
+import pprint
 import tempfile
 from urllib.request import urlopen
 import os
@@ -36,5 +37,6 @@ def search(query, language):
     return {
         "ipa": ipa,
         "audio_filename": audio_filename,
-        "definitions": definition_choices
+        "definitions": definition_choices,
+        # "diag": pprint.pformat(pronunciation, depth=3, width=90),
     }
